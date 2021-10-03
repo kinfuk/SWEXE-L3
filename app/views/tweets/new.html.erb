@@ -12,5 +12,7 @@
 <%= form_for @tweet, url: {action: :create} do |f| %>
     <%= f.label :message, 'ツイート' %>
     <%= f.text_field :message %>
+    <%= f.label :file, 'ファイル' %>
+    <%= f.file_field :file %>
     <%= f.submit 'ツイート' %>
 <% end %>
