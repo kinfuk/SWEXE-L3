@@ -6,10 +6,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
   def create
+    logger.debug "-----"+params[:tweet][:message]+"-----"
     @tweet = Tweet.new(message: params[:tweet][:message], tdate: Time.current)
     if @tweet.save
       flash[:notice] = '1レコード追加しました'
-      redirect_to root_path
+      redirect_to tweets_path
     else
       render 'new'
     end
@@ -22,7 +23,7 @@ class TweetsController < ApplicationController
     if tweet.destroy
       flash[:notice] = '1レコード追加しました'
     end
-    redirect_to root_path
+    redirect_to tweets_path
   end
   def edit
     @tweet = Tweet.find(params[:id])
